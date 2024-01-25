@@ -3,13 +3,18 @@ require("dotenv").config()
 const app = express();
 const cors = require("cors");
 
-app.use(cors())
 
 // /* - - - CONTROLLERS - - - */
-const userController = require("./controllers/usersController");
+const userController = require("./controllers/usersController.js");
+
+
+app.use(cors())
+app.use(express.json());
 
 
 // /* - - - ROUTES - - - */
+app.use("/users", userController);
+
 
 
 app.get("/", (req, res) => {

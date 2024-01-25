@@ -1,80 +1,124 @@
 
 \c data_wharehouse_dev;
 
+DROP TABLE IF EXISTS gtr_users;
+DROP TABLE IF EXISTS gtr_interests;
+DROP TABLE IF EXISTS gtr_events;
+DROP TABLE IF EXISTS gtr_event_activity;
+DROP TABLE IF EXISTS gtr_event_activity_notes;
+DROP TABLE IF EXISTS gtr_chat_rooms;
+DROP TABLE IF EXISTS gtr_ads;
+DROP TABLE IF EXISTS gtr_messages;
+DROP TABLE IF EXISTS gtr_message_status;
+DROP TABLE IF EXISTS gtr_message_folders;
 
-DROP TABLE IF EXISTS guitar_users;
-CREATE TABLE guitar_users (
+CREATE TABLE gtr_users (
   id SERIAL PRIMARY KEY,
   first_name TEXT,
   last_name TEXT,
+  user_name VARCHAR(20),
   email TEXT,
+  recovery_email VARCHAR(30),
   phone1 VARCHAR(15),
   phone2 VARCHAR(15),
-  password_hash VARCHAR(255),
+  -- dob: INT array of month, day, year [99, 99, 9999]
+  dob INT[],
+  password_hash VARCHAR(20),
+  primary_phone VARCHAR(15),
+  profile_img TEXT,
+  street VARCHAR(50),
+  city VARCHAR(40),
+  home_state VARCHAR(25),
+  zip_code VARCHAR(10),
+  instructor BOOLEAN,
+  student BOOLEAN,
+  parent INT[],
+  interests TEXT[],
+  tag_line TEXT,
+  bio TEXT,
   create_date TIMESTAMP DEFAULT now()
 );
 
-DROP TABLE IF EXISTS guitar_profiles;
-CREATE TABLE guitar_profiles (
+CREATE TABLE gtr_interests (
   id SERIAL PRIMARY KEY,
-  user_id INT,
-  profile_img TEXT,
-  primary_phone VARCHAR(15),
-  street VARCHAR(20)
-  city VARCHAR(50),
-  homestate VARCHAR(50),
-  instructor BOOLEAN,
-  student BOOLEAN,
-  parent BOOLEAN,
-  create_date DATE
-);
-
-DROP TABLE IF EXISTS guitar_interests;
-CREATE TABLE guitar_interests (
-  id SERIAL PRIMARY KEY,
-  user_id INT,
+  profile_id INT,
   -- Learning preferences
-  finger_picking BOOLEAN,
-  fundamentals BOOLEAN,
-  note_readng BOOLEAN,
-  music_theory BOOLEAN,
-  scale_theory BOOLEAN,
+  learning_preferences_lookup TEXT[],
   -- Genre preferences
-  blues BOOLEAN,
-  bluegrass BOOLEAN,
-  classical BOOLEAN,
-  country BOOLEAN,
-  flamenco BOOLEAN,
-  folk BOOLEAN,
-  jazz BOOLEAN,
-  gospel BOOLEAN,
+  genre_preferences_lookup TEXT[],
   -- Networking preferences
-  guitarists BOOLEAN,
-  bass_players BOOLEAN,
-  piano_players BOOLEAN,
-  violinist BOOLEAN,
-  cellist BOOLEAN,
-  double_bass BOOLEAN,
+  networking_preferences_lookup TEXT[]
+);
+
+CREATE TABLE gtr_events (
+  id SERIAL PRIMARY KEY,
+  title TEXT,
+  event_description TEXT,
+  instructor_id INT,
+  duration_mins INT,
+  occurrences INT,
+  instrument_needed BOOLEAN,
+  tuition DECIMAL,
   create_date DATE
 );
 
-DROP TABLE IF EXISTS guitar_activities;
-CREATE TABLE guitar_activities (
+CREATE TABLE gtr_event_activity (
   id SERIAL PRIMARY KEY,
+  event_activity_id INT,
   instructor_id INT,
-  student_id INT,
+  participant_id INT,
   activity_date DATE,
   instrument VARCHAR(15),
-  activity_description TEXT,
   activity_complete BOOLEAN,
-  create_date DATE
-);
-DROP TABLE IF EXISTS activity_notes;
-CREATE TABLE activity_notes (
-  id SERIAL PRIMARY KEY,
-  activities_id INT,
-  note_date DATE,
-  activity_note TEXT,
-  create_date DATE
+  create_date TIMESTAMP DEFAULT now()
 );
 
+CREATE TABLE gtr_event_activity_notes (
+  id SERIAL PRIMARY KEY,
+  event_activity_id INT,
+  note_date DATE,
+  note TEXT,
+  create_date TIMESTAMP DEFAULT now()
+);
+
+CREATE TABLE gtr_chat_rooms (
+  id SERIAL PRIMARY KEY,
+  room_name TEXT,
+  room_description TEXT,
+  create_date TIMESTAMP DEFAULT now()
+);
+
+CREATE TABLE gtr_ads (
+  -- Use for classified adds  
+  id SERIAL PRIMARY KEY,
+  topic TEXT,
+  content TEXT,
+  city VARCHAR(30),
+  home_state VARCHAR(2),
+  zip VARCHAR(10),
+  create_date TIMESTAMP DEFAULT now()
+);
+
+CREATE TABLE gtr_messages (
+  id SERIAL PRIMARY KEY,
+  sender INT,
+  recipient INT,
+  topic TEXT,
+  content TEXT,
+  parent_id INT,
+  create_date TIMESTAMP DEFAULT now()
+);
+
+CREATE TABLE gtr_message_status (
+  id SERIAL PRIMARY KEY,
+  message_id INT,
+  mssg_read BOOLEAN,
+  archived BOOLEAN
+);
+
+CREATE TABLE gtr_message_folders (
+  id SERIAL PRIMARY KEY,
+  message_id INT,
+  folder_name text,
+  date_added TIMESTAMP DEFAULT now()
+);
