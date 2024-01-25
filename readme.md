@@ -14,3 +14,14 @@ Users can reply to posts.
 Users can view messages un-categorized, categorized in folders, or as threads -- which means you see the main topic with it's attached replies
 users can like messages, and likes show up in the view of messages.
 Site is monetized with ads which show up on their own gtr_ads page. Featured ads show up on other pages in a side-bar.
+
+
+
+learning_preferences:
+- '{"Finger Picking", "Flatpicking", "Fundamentals", "Guitar Fundamentals", "Note Reading", "Music Fundamentals", "Music Theory", "Plectrum Technique", "Scale Theory","Song Writing"}'
+
+genre_preferences:
+- '{"Blues", "Bluegrass", "Classical", "Country", "Flamenco", "Folk", "Jazz", "Gospel"}'
+
+networking_preferences:
+- '{"Guitarists", "Bass Players",  "Cellist", "Double Bass", "Lsp Steel Players", "Piano Players", "Upright Bass", "Violinist"}'

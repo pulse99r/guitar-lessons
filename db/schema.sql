@@ -2,7 +2,6 @@
 \c data_wharehouse_dev;
 
 DROP TABLE IF EXISTS gtr_users;
-DROP TABLE IF EXISTS gtr_interests;
 DROP TABLE IF EXISTS gtr_events;
 DROP TABLE IF EXISTS gtr_event_activity;
 DROP TABLE IF EXISTS gtr_event_activity_notes;
@@ -33,21 +32,15 @@ CREATE TABLE gtr_users (
   instructor BOOLEAN,
   student BOOLEAN,
   parent INT[],
-  interests TEXT[],
+  -- Learning preferences
+  learning_preferences TEXT[],
+  -- Genre preferences
+  genre_preferences TEXT[],
+  -- Networking preferences
+  networking_preferences TEXT[],
   tag_line TEXT,
   bio TEXT,
   create_date TIMESTAMP DEFAULT now()
-);
-
-CREATE TABLE gtr_interests (
-  id SERIAL PRIMARY KEY,
-  profile_id INT,
-  -- Learning preferences
-  learning_preferences_lookup TEXT[],
-  -- Genre preferences
-  genre_preferences_lookup TEXT[],
-  -- Networking preferences
-  networking_preferences_lookup TEXT[]
 );
 
 CREATE TABLE gtr_events (
