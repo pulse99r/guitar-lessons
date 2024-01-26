@@ -17,11 +17,11 @@ CREATE TABLE gtr_users (
   last_name TEXT,
   user_name VARCHAR(20),
   email TEXT,
-  recovery_email VARCHAR(30),
+  recovery_email VARCHAR(30) DEFAULT NULL,
   phone1 VARCHAR(15),
-  phone2 VARCHAR(15),
+  phone2 VARCHAR(15) DEFAULT NULL,
   -- dob: INT array of month, day, year [99, 99, 9999]
-  dob INT[],
+  dob DATE DEFAULT '1900-12-31',
   password_hash VARCHAR(20),
   primary_phone VARCHAR(15),
   profile_img TEXT,
@@ -29,17 +29,17 @@ CREATE TABLE gtr_users (
   city VARCHAR(40),
   home_state VARCHAR(25),
   zip_code VARCHAR(10),
-  instructor BOOLEAN,
-  student BOOLEAN,
-  parent INT[],
+  instructor BOOLEAN DEFAULT false,
+  student BOOLEAN DEFAULT false,
+  parent INT[] DEFAULT NULL,
   -- Learning preferences
-  learning_preferences TEXT[],
+  learning_preferences TEXT[] DEFAULT NULL,
   -- Genre preferences
-  genre_preferences TEXT[],
+  genre_preferences TEXT[] DEFAULT NULL,
   -- Networking preferences
-  networking_preferences TEXT[],
-  tag_line TEXT,
-  bio TEXT,
+  networking_preferences TEXT[] DEFAULT '{"Guitar"}',
+  tag_line TEXT DEFAULT NULL,
+  bio TEXT DEFAULT NULL,
   create_date TIMESTAMP DEFAULT now()
 );
 
