@@ -115,3 +115,4 @@ CREATE TABLE gtr_message_folders (
   folder_name text,
   date_added TIMESTAMP DEFAULT now()
 );
+

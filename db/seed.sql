@@ -15,8 +15,6 @@ INSERT INTO gtr_users (
   ( 'Sandra', 'Justice', 'sandraj', 'sandra@hotmail.com', NULL, '212-212-2127', '646-515-1206', '{1993,07, 18}', 'abcd1234', NULL, NULL, NULL, NULL, 'PA', '15061', false, false, '{}', '{"Jazz"}', '{"Rock", "Blues", "Alternative"}', '{"Guitar", "Piano", "Bass" }', NULL, NULL, CURRENT_TIMESTAMP ),
   ( 'Kenti', 'Johnson', 'kentij', 'rayjguitar@gmail.com', NULL, '212-212-2199', '646-515-1298', '{1996, 08, 11}', 'abcd1234', NULL, NULL, '422 Cherry Blossom Lane', 'Mountain City', 'NY', '10461', true, false, '{}', '{"Jazz"}', '{"Rock", "Blues", "Alternative"}', '{"Guitar", "Piano", "Bass" }', 'Jazz, Rock, Blues', 'Offering Guitar Lessons in the New York area since 1998!', CURRENT_TIMESTAMP );
 
-
-
 INSERT INTO gtr_events (title, event_description, instructor_id, duration_mins, occurrences, instrument_needed, tuition, create_date) VALUES
   ('Guitar Fundamentals', 'Learn the fundamentals of playing the guitar, how to read notes, chords, strum, how to fingerpick, No instrument required during lesson in instructor''s studio.  Instrument needed for other locations', 10, 60, 1, true, 75.00, CURRENT_TIMESTAMP),
   ('Guitar Fundamentals: 12 Sessions', 'Learn the fundamentals of playing the guitar, how to read notes, chords, strum, how to fingerpick, No instrument required during lesson in instructor''s studio.  Instrument needed for other locations.  Twelve Sessions', 10, 60, 12, true, 75.00, CURRENT_TIMESTAMP
@@ -48,5 +46,6 @@ INSERT INTO gtr_event_activity_notes (event_activity_id, note_date, note, create
  ('Favorite Songs to Play','Everyone has favorite songs they enjoy listening to, which are often very different form what we like top play ourselves on guitar. What songs do you like to play, and why?', CURRENT_TIMESTAMP),
  ('Guitar for Sale','Have a guitar to sell?  Post it here.', CURRENT_TIMESTAMP),
  ('Music Teachers','People meet potential teachers in your area.  Teachers, share experiences with other teachers and meet potential students.', CURRENT_TIMESTAMP),
+ ('Improvising','Let''s talk about chord progressions in different keys and what notes, licks, phrases work best for improvising over them.', CURRENT_TIMESTAMP),
  ('Music Theory','Everything you''ve ever wanted to know about music theory but were afraid to ask, maybe?', CURRENT_TIMESTAMP),
  ('New York City','Meet and chat with other guitarists, teachers, songwriters, producers', CURRENT_TIMESTAMP);
